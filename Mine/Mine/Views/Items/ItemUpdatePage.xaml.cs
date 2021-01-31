@@ -29,6 +29,10 @@ namespace Mine.Views
             BindingContext = this;
         }
 
+        /// <summary>
+        /// Constructor that takes an argument
+        /// </summary>
+        /// <param name="viewModel"></param>
         public ItemUpdatePage(ItemReadViewModel viewModel)
         {
             InitializeComponent();
