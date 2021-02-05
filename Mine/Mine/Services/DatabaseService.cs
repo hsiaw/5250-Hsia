@@ -47,6 +47,7 @@ namespace Mine.Services
                 return false;
             }
 
+            //Call the database to insert item param
             var result = await Database.InsertAsync(item);
             if(result == 0)
             {
@@ -65,9 +66,23 @@ namespace Mine.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Looks up ID in database and returns the itemmodel
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Task<ItemModel> ReadAsync(string id)
         {
-            throw new NotImplementedException();
+            if(id == null)
+            {
+                return null;
+            }
+
+            //Call the Database to read the ID
+            //Using Linq syntax Find the first record that has the ID that matches
+            var result = Database.Table<ItemModel>().FirstOrDefaultAsync(m=>m.Id.Equals(id));
+
+            return result;
         }
 
         /// <summary>
